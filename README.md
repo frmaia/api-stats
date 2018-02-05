@@ -1,6 +1,10 @@
 # How to use:
 
 ## 1 - Build and run service:
+
+#### Configure application parameters
+Please, refer to the [application.properties](/src/main/resources/application.properties) file if you eventually want to change default values for this application. 
+
 #### Build:
 ```
 mvn clean package
@@ -9,6 +13,7 @@ mvn clean package
 ```
 mvn test
 ```
+
 #### Run service using java
 ```
 java -jar {{path-to-the-builded-jar}}
