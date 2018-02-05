@@ -16,7 +16,9 @@ java -jar {{path-to-the-builded-jar}}
 
 ## 2 - Consume the API's
 #### POST /transactions (example)
+```
 timestamp=$(date +"%s"000);echo $timestamp; curl -X POST -H "Content-Type:application/json" -d "{\"amount\":10, \"timestamp\":${timestamp}}" localhost:8080/transactions
+```
 
 #### GET /statistics (example)
 ```
