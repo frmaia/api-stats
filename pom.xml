@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.springframework</groupId>
-    <artifactId>gs-spring-boot</artifactId>
+    <groupId>org.frmaia</groupId>
+    <artifactId>api-stats</artifactId>
     <version>0.1.0</version>
 
     <parent>
@@ -14,16 +14,45 @@
     </parent>
 
     <dependencies>
+        <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>1.5.10.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>1.5.10.RELEASE</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Junit 5-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.0.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.0.3</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
-
 
     <build>
         <plugins>
@@ -36,6 +65,26 @@
                     </jvmArguments>
                 </configuration>
             </plugin>
+
+            <!-- workaround for running junit5 with maven -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>1.0.3</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                        <version>5.0.3</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
         </plugins>
     </build>
 
